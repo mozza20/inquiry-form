@@ -1,0 +1,31 @@
+body {
+    font-family: 'Inika';
+    font-style: normal;
+    font-weight: 400;
+}
+
+.header {
+    position: relative;
+    width: 1512px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+}
+
+.header__inner {
+    margin: 0 auto;
+    max-width: 1512px;
+    background: #FFFFFF;
+}
+
+.header__logo {
+    text-align: center;
+    width: 1512px;
+    height: 100px;
+    text-decoration: none;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8B7969;
+}

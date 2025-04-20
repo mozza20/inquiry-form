@@ -1,0 +1,68 @@
+/* ページネーション */
+svg.w-5.h-5 {
+    width: 30px;
+    height: 30px;
+}
+
+.flex.justify-between.flex-1,
+.text-sm.text-gray-700.leading-5 {
+    display: none;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 1512px;
+}
+
+h2 {
+    margin: 50px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 200;
+    color: #8B7969;
+}
+
+/* 検索 */
+.search-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 一覧 */
+.contact-lists {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+
+
+}
+
+.contact-table {
+    width: 1183px;
+    height: 570px;
+}
+
+.contact-table__headline {
+    background-color: #8B7969;
+    height: 59px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.contact-table__headline>th,
+.contact-table__contents>td {
+    padding: 0 30px;
+}
+
+.contact-table__contents {
+    color: #8B7969;
+    font-size: 20px;
+    border: 1px solid #E3DED9;
+    border-collapse: none;
+
+}

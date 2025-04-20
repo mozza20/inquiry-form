@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//登録画面の表示
+Route::get('/register', [AuthController::class, 'user']);
+
+//登録ボタン
+Route::post('/login',[AuthController::class,'store']);
+
+//ログインボタン
+Route::post('/admin',[AuthController::class,'login'])
+//->middleware(['auth'])->name('admin')
+;
+
+//問い合わせフォームの表示
+Route::get('/', [ContactController::class, 'index'])->name('contact.form');
+
+//問い合わせ内容を確認画面へ表示
+Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+
+//確認画面から送信or修正
+Route::post('/contact/submit', [ContactController::class, 'store'])->name('contact.store');
+
+//thanks画面へ
+Route::get('/contact/thanks', fn()=>view('thanks'))->name('contact.thanks');
+
+//管理画面へ
+Route::get('/admin',[AdminController::class,'index']);
+
+//検索
+Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');

@@ -1,0 +1,140 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1512px;
+}
+
+/* お問い合わせ内容 ※ */
+h2 {
+    margin: 50px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 200;
+    color: #8B7969;
+}
+
+.contact-form {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+    left: 1316px;
+    top: 33px;
+}
+
+.contact-form__inner {
+    width: 972px;
+    height: 606px;
+}
+
+.contact-form__row {
+    display: flex;
+    margin: 30px 0;
+    height: 38px;
+}
+
+.contact-form__item-label {
+    display: inline-block;
+    width: 300px;
+    font-size: 20px;
+    color: #8B7969;
+    padding: 10px 0;
+}
+
+.contact-form__item-label>span {
+    color: #FF9494;
+}
+
+.contact-form__item-input,
+.contact-form__item--tel-num,
+.contact-form__item-textarea {
+    display: inline;
+    /* flex: 1; */
+    height: 38px;
+    background: #F4F4F4;
+    color: #BEB1A6;
+    border: none;
+    font-size: 14px;
+    padding: 20px 0 20px 40px;
+}
+
+.contact-form__item-input,
+.contact-form__item-textarea {
+    width: 620px;
+}
+
+.contact-form__item-input--last-name,
+.contact-form__item-input--first-name {
+    width: 288px;
+    display: inline;
+    /* flex: 1; */
+    height: 38px;
+    background: #F4F4F4;
+    color: #BEB1A6;
+    border: none;
+    font-size: 14px;
+    padding: 20px 0 20px 40px;
+}
+
+.contact-form__item-input--last-name {
+    margin-right: 45px;
+}
+
+.contact-form__item--gender {
+    display: inline-block;
+    margin-right: 50px;
+    font-size: 18px;
+    color: #BEB1A6;
+    accent-color: #8B7969;
+}
+
+.contact-form__item--tel-num {
+    width: 176px;
+}
+
+.contact-form__item--tel {
+    display: flex;
+    align-items: center;
+}
+
+.contact-form__item--tel:nth-of-type(1)::after,
+.contact-form__item--tel:nth-of-type(2)::after {
+    display: inline;
+    margin: 0 1.3em;
+    content: "-";
+    text-align: center;
+    color: #BEB1A6;
+}
+
+.contact-form__item--category {
+    display: relative;
+    width: 332px;
+    height: 38px;
+    background: #F4F4F4;
+    color: #BEB1A6;
+    border: none;
+    font-size: 14px;
+    padding-left: 40px;
+    appearance: none;
+}
+
+.contact-form__item--select:first-child::after {
+    /* どこかいった */
+    content: "▼";
+    font-weight: bold;
+    color: #BEB1A6;
+}
+
+.contact-form__button-submit {
+    display: inline-block;
+    position: absolute;
+    width: 160px;
+    height: 46px;
+    left: 696px;
+    background: #82756A;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+}

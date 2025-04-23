@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-// use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 
@@ -21,11 +20,10 @@ use App\Http\Controllers\AdminController;
 Route::get('/register', [AuthController::class, 'user']);
 
 //登録ボタン
-Route::post('/login',[AuthController::class,'store']);
+Route::post('/register',[AuthController::class,'store']);
 
 //ログインボタン
-Route::post('/admin',[AuthController::class,'login'])
-//->middleware(['auth'])->name('admin')
+Route::post('/admin',[AuthController::class,'login'])->middleware(['auth'])->name('admin')
 ;
 
 //問い合わせフォームの表示
@@ -45,3 +43,13 @@ Route::get('/admin',[AdminController::class,'index']);
 
 //検索
 Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');
+
+//モーダルウィンドウ表示
+Route::get('/admin/detail/{id}', [AdminController::class, 'detail'])->name('admin.detail');
+
+
+// データの削除
+Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+//ログアウト
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');

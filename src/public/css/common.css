@@ -5,14 +5,14 @@ body {
 }
 
 .header {
-    position: relative;
-    width: 1512px;
     height: 100px;
     left: 0px;
     top: 0px;
+    z-index: 1000;
 }
 
 .header__inner {
+    display: flex;
     margin: 0 auto;
     max-width: 1512px;
     background: #FFFFFF;

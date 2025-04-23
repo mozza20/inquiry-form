@@ -45,4 +45,10 @@ class ContactController extends Controller
         return view(route('contact.thanks'));
     }
 
+    //データ削除
+    public function destroy(Contact $contact){
+        $contact->delete();
+        return redirect()->route('admin.search')->with('success', 'データが削除されました');
+    }
+
 }

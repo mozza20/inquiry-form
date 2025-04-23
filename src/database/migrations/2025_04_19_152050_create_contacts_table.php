@@ -27,6 +27,7 @@ class CreateContactsTable extends Migration
             $table->string('building')->nullable;
             $table->text('detail');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

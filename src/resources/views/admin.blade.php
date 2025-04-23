@@ -4,6 +4,15 @@
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
+@section('header')
+    <div class="header-nav">
+        <form class="header-nav__button" action="{{route('logout')}}" method="POST">
+            @csrf
+            <button class="header-nav__button--logout" type="submit">logout</button>
+        </form>
+    </div>
+@endsection
+
 @section('content')
 <div class="admin">
     <h2>Admin</h2>
@@ -64,12 +73,73 @@
                     <td>{{$contact['email']}}</td>
                     <td>{{$contact->category->content}}</td>
                     <td>
-                        <button type="submit">詳細</button>
+                        <button type="button" class="open-modal-btn"
+                            data-id="{{ $contact->id }}"
+                            data-name="{{ $contact->last_name }}　{{ $contact->first_name }}"
+                            data-gender="{{ $contact->gender }}"
+                            data-email="{{ $contact->email }}"
+                            data-tel="{{ $contact->no1 }}{{ $contact->no2 }}{{ $contact->no3 }}"
+                            data-address="{{ $contact->address }}"
+                            data-building="{{ $contact->building }}"
+                            data-category="{{ $contact->category->content }}"
+                            data-detail="{{ $contact->detail }}">
+                            詳細
+                        </button>
                     </td>
                 </tr>
                 @endforeach
             </table>
         </form>
+        <!-- モーダルウィンドウ -->
+        <div id="modal" class="modal hidden">
+            <div class="close-button">
+                <button id="close-modal">×</button>
+            </div>
+            <div class="modal-content">
+                <table>
+                    <tr><td>お名前</td><td id="modal-name"></td></tr>
+                    <tr><td>性別</td><td id="modal-gender"></td></tr>
+                    <tr><td>メール</td><td id="modal-email"></td></tr>
+                    <tr><td>電話番号</td><td id="modal-tel"></td></tr>
+                    <tr><td>住所</td><td id="modal-address"></td></tr>
+                    <tr><td>建物名</td><td id="modal-building"></td></tr>
+                    <tr><td>カテゴリ</td><td id="modal-category"></td></tr>
+                    <tr><td>詳細内容</td><td id="modal-detail"></td></tr>
+                </table>
+                <form id="delete-form" method="POST" action="" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" id="delete-btn" class="delete-btn">削除</button>
+        </form>
+            </div>
+        </div>
+
     </div>
+    <!-- JavaScript -->
+     @section('scripts')
+    <script>
+    document.querySelectorAll('.open-modal-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            document.getElementById('modal-name').innerText = this.dataset.name;
+            document.getElementById('modal-gender').innerText = this.dataset.gender;
+            document.getElementById('modal-email').innerText = this.dataset.email;
+            document.getElementById('modal-tel').innerText = this.dataset.tel;
+            document.getElementById('modal-address').innerText = this.dataset.address;
+            document.getElementById('modal-building').innerText = this.dataset.building;
+            document.getElementById('modal-category').innerText = this.dataset.category;
+            document.getElementById('modal-detail').innerText = this.dataset.detail;
+            // 削除アクションの設定
+            const contactId = this.dataset.id;
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/contacts/${contactId}`;
+
+            document.getElementById('modal').classList.remove('hidden');
+        });
+    });
+
+    document.getElementById('close-modal').addEventListener('click', function () {
+        document.getElementById('modal').classList.add('hidden');
+    });
+    </script>
+    @endsection
 </div>
-@endsection('content')

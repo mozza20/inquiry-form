@@ -16,7 +16,7 @@
         <h2>Register</h2>
     </div>
     <div class="register-form">
-        <form class="register-form__inner" action="/register/login" method="post">
+        <form class="register-form__inner" action="/register" method="post">
             @csrf
             <div class="register-form__row">
                 <label class="register-form__item-label">お名前</label>

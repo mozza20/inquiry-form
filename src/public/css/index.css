@@ -31,7 +31,7 @@ h2 {
 
 .contact-form__row {
     display: flex;
-    margin: 30px 0;
+    margin: 30px 0 0 0;
     height: 38px;
 }
 
@@ -63,6 +63,10 @@ h2 {
 .contact-form__item-input,
 .contact-form__item-textarea {
     width: 620px;
+}
+
+.contact-form__item-textarea {
+    height: 129px;
 }
 
 .contact-form__item-input--last-name,
@@ -130,6 +134,7 @@ h2 {
 .contact-form__button-submit {
     display: inline-block;
     position: absolute;
+    margin: 120px 0 0 0;
     width: 160px;
     height: 46px;
     left: 696px;
@@ -137,4 +142,20 @@ h2 {
     color: #ffffff;
     border: none;
     font-size: 20px;
+}
+
+.error-message {
+    display: flex;
+    color: #FF9494;
+    font-size: 18px;
+    padding-left: 300px;
+}
+
+.error-message--name {
+    width: 333px;
+}
+
+.error-message--tel {
+    font-size: 14px;
+    width: 225px;
 }

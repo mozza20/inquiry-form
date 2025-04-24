@@ -53,3 +53,6 @@ Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->nam
 
 //ログアウト
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+
+//エクスポート
+Route::get('csv-download',[ContactController::class,'downloadCsv']);

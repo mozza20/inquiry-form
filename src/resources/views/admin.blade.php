@@ -51,7 +51,9 @@
         </form>
     </div>
     <div class="export-button">
-        <a href=" " download="">エクスポート</a>
+        <form action="/csv-download" method="GET">
+            <button type="submit">エクスポート</button>
+        </form>
     </div>
     <div class="pagination">
         {{$contacts->links()}}

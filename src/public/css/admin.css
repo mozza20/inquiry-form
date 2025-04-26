@@ -253,3 +253,85 @@ svg.w-5.h-5 {
 .hidden {
     display: none;
 }
+
+/* モーダルウィンドウ */
+.modal.hidden {
+    display: none;
+    border: 1px solid #8b7969;
+    box-shadow: 4px 4px 0 #8B796940;
+    position: fixed;
+    /* モーダルを画面中央に固定表示するために追加 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 中央寄せ */
+    background-color: white;
+    /* モーダルの背景色 */
+    z-index: 1000;
+    /* 他の要素より前面に表示 */
+}
+
+.close-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-button>button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #8B7969;
+    border-radius: 20px;
+    font-size: 30px;
+}
+
+.modal-content {
+    margin: 100px auto;
+    width: 805px;
+    height: 858px;
+}
+
+.modal-content__table {
+    display: flex;
+    width: 100%;
+    margin: 80px 0 50px 0;
+}
+
+tbody {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.modal-content__row {
+    width: 741px;
+}
+
+.modal-content__label {
+    display: inline-block;
+    width: 180px;
+    margin-left: 80px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #8B7969;
+}
+
+.modal-content__text {
+    display: inline-block;
+    width: 413px;
+    font-size: 20px;
+    color: #8B7969;
+}
+
+.modal_delete {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-btn {
+    display: block;
+    padding: 8px 20px;
+    background-color: #BA370D;
+    border: none;
+    font-size: 18px;
+    color: #ffffff;
+}

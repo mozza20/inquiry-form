@@ -54,9 +54,9 @@ h2 {
     /* flex: 1; */
     height: 38px;
     background: #F4F4F4;
-    color: #BEB1A6;
+    color: #8B7969;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
     padding: 20px 0 20px 40px;
 }
 
@@ -73,12 +73,11 @@ h2 {
 .contact-form__item-input--first-name {
     width: 288px;
     display: inline;
-    /* flex: 1; */
     height: 38px;
     background: #F4F4F4;
-    color: #BEB1A6;
+    color: #8B7969;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
     padding: 20px 0 20px 40px;
 }
 
@@ -90,7 +89,7 @@ h2 {
     display: inline-block;
     margin-right: 50px;
     font-size: 18px;
-    color: #BEB1A6;
+    color: #8B7969;
     accent-color: #8B7969;
 }
 
@@ -112,6 +111,11 @@ h2 {
     color: #BEB1A6;
 }
 
+.login-form__row input::placeholder {
+    color: #BEB1A6;
+    font-size: 14px;
+}
+
 .contact-form__item--category {
     display: relative;
     width: 332px;
@@ -121,15 +125,8 @@ h2 {
     border: none;
     font-size: 14px;
     padding-left: 40px;
-    appearance: none;
 }
 
-.contact-form__item--select:first-child::after {
-    /* どこかいった */
-    content: "▼";
-    font-weight: bold;
-    color: #BEB1A6;
-}
 
 .contact-form__button-submit {
     display: inline-block;

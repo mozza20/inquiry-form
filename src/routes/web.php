@@ -22,9 +22,18 @@ Route::get('/register', [AuthController::class, 'user']);
 //登録ボタン
 Route::post('/register',[AuthController::class,'store']);
 
+// ログイン画面表示
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+// ログインボタンでPOST
+Route::post('/login',[AuthController::class,'login']);
+
 //ログインボタン
-Route::post('/admin',[AuthController::class,'login'])->middleware(['auth'])->name('admin')
-;
+Route::get('/admin',[AdminController::class,'login'])->middleware(['auth'])->name('admin');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/', [AdminController::class, 'index'])->name('admin');
+// });
 
 //問い合わせフォームの表示
 Route::get('/', [ContactController::class, 'index'])->name('contact.form');
@@ -39,7 +48,7 @@ Route::post('/contact/submit', [ContactController::class, 'store'])->name('conta
 Route::get('/contact/thanks', fn()=>view('thanks'))->name('contact.thanks');
 
 //管理画面へ
-Route::get('/admin',[AdminController::class,'index']);
+Route::get('/admin',[AdminController::class,'index'])->name('admin');
 
 //検索
 Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');

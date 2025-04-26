@@ -92,20 +92,43 @@
                 <button id="close-modal">×</button>
             </div>
             <div class="modal-content">
-                <table>
-                    <tr><td>お名前</td><td id="modal-name"></td></tr>
-                    <tr><td>性別</td><td id="modal-gender"></td></tr>
-                    <tr><td>メール</td><td id="modal-email"></td></tr>
-                    <tr><td>電話番号</td><td id="modal-tel"></td></tr>
-                    <tr><td>住所</td><td id="modal-address"></td></tr>
-                    <tr><td>建物名</td><td id="modal-building"></td></tr>
-                    <tr><td>カテゴリ</td><td id="modal-category"></td></tr>
-                    <tr><td>詳細内容</td><td id="modal-detail"></td></tr>
+                <table class="modal-content__table">
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">お名前</td>
+                        <td class="modal-content__text" id="modal-name"></td></tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">性別</td>
+                        <td class="modal-content__text" id="modal-gender"></td>
+                    </tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">メール</td>
+                        <td class="modal-content__text" id="modal-email"></td>
+                    </tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">電話番号</td>
+                        <td class="modal-content__text" id="modal-tel"></td>
+                    </tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">住所</td>
+                        <td class="modal-content__text" id="modal-address"></td>
+                    </tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">建物名</td>
+                        <td class="modal-content__text" id="modal-building"></td>
+                    </tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">カテゴリ</td>
+                        <td class="modal-content__text" id="modal-category"></td>
+                    </tr>
+                    <tr class="modal-content__row">
+                        <td class="modal-content__label">詳細内容</td>
+                        <td class="modal-content__text" id="modal-detail"></td>
+                    </tr>
                 </table>
-                <form id="delete-form" method="POST" action="" style="display:inline;">
+                <form class="modal_delete" id="delete-form" method="POST" action="{{route('admin')}}">
                 @csrf
                 @method('DELETE')
-                    <button type="submit" id="delete-btn" class="delete-btn">削除</button>
+                    <button class="delete-btn" type="submit" id="delete-btn" >削除</button>
                 </form>
             </div>
         </div>

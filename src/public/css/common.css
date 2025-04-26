@@ -11,8 +11,7 @@ body {
 }
 
 .header__inner {
-    display: flex;
-    align-items: center;
+    position:relative;
     margin: 0 auto;
     max-width: 1512px;
     background: #FFFFFF;

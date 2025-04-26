@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -14,11 +15,6 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    //いらん？
-    // public function login(UserRequest $request){
-    //     $user=$request->only(['name','email','password']);
-    //     return view('login',compact('user'));
-    // }
 
     //登録ボタンを押す→ログインページへ
     public function store(UserRequest $request){
@@ -28,9 +24,22 @@ class AuthController extends Controller
         return redirect('/login')->with('status','登録が完了しました');
     }
     //ログインボタンを押す→管理画面へ
-    public function login(){
-        return view('admin');        
+    public function login(LoginRequest $request){
+        // $user=$request->only(['name','email','password']);
+        // return view('admin',compact('user'));
+            if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect()->route('admin'); // 認証後、管理画面へリダイレクト
+        } else {
+            return back()->withErrors(['email' => '認証に失敗しました。'])->withInput();
+        }
     }
+
+    // ログイン画面を表示するだけ
+    public function showLoginForm(){
+        return view('auth.login'); // login.blade.php を表示
+    }
+
+
     //ログアウト
     public function logout(Request $request){
         Auth::logout();//認証情報クリア

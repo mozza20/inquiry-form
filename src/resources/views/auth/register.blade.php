@@ -5,8 +5,8 @@
 @endsection
 
 @section('header')
-    <div class="header__button">
-        <a class="header__button--login" href="/login">login</a>
+    <div class="header-nav-button">
+        <a class="header-nav__button--login" href="/login">login</a>
     </div>
 @endsection
 
@@ -21,25 +21,33 @@
             <div class="register-form__row">
                 <label class="register-form__item-label">お名前</label>
                 <input class="register-form__item-input" type="text" name="name" placeholder="例：山田　太郎" value="{{old('name')}}">
-                @error('name')
-                {{$message}}
-                @enderror</br>
+                <div class="error-message">
+                    @error('name')
+                    {{$message}}
+                    @enderror
+                </div>
             </div>
             <div class="register-form__row">
                 <label class="register-form__item-label">メールアドレス</label>
                 <input class="register-form__item-input" type="email" name="email" placeholder="例：test@example.com" value="{{old('email')}}">
-                @error('email')
-                {{$message}}
-                @enderror</br>
+                <div class="error-message">
+                    @error('email')
+                    {{$message}}
+                    @enderror
+                </div>
             </div>
             <div class="register-form__row">
                 <label class="register-form__item-label">パスワード</label>
                 <input class="register-form__item-input" type="password" name="password" placeholder="例：coachtech1106">
-                @error('password')
-                {{$message}}
-                @enderror</br>
+                <div class="error-message">
+                    @error('password')
+                    {{$message}}
+                    @enderror
+                </div>
             </div>
-            <button class="register-form__button-submit" type="submit">登録</button>
+            <div class="register-form__button">
+                <button class="register-form__button-submit" type="submit">登録</button>
+            </div>
         </form>
     </div>
 </div>

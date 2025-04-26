@@ -1,7 +1,8 @@
-.header__button {
+.header-nav-button {
     position: absolute;
-    top: 33px;
+    top: 50%;
     right: 20px;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,10 +12,10 @@
     border: 1px solid #D9C6B5;
 }
 
-.header__button--login {
+.header-nav__button--login {
     all: unset;
     font-family: 'Inika', serif;
-    font-size: 16px;
+    font-size: 20px;
     color: #D9C6B5;
     cursor: pointer;
     text-align: center;
@@ -57,8 +58,7 @@ h2 {
 }
 
 .register-form__row {
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     margin: 30px 0;
     padding: 10px 0;
     width: 445px;
@@ -75,24 +75,36 @@ h2 {
     display: block;
     width: 445px;
     height: 55px;
+    padding: 20px 30px;
     background: #F4F4F4;
-    color: #BEB1A6;
+    color: #8B7969;
     border: none;
+    font-size: 18px;
+}
+
+.register-form__item-input::placeholder {
+    color: #BEB1A6;
     font-size: 14px;
-    padding: 20px 0;
+}
+
+.register-form__button {
+    display: flex;
+    justify-content: center;
+    width: 736px;
 }
 
 .register-form__button-submit {
-    flex-direction: column;
-    align-items: flex-start;
     padding: 10px 40px;
-    position: absolute;
     width: 120px;
-    height: 46px;
-    left: 696px;
-    top: 800px;
     background: #82756A;
     color: #ffffff;
     border: none;
     font-size: 20px;
+}
+
+/* エラーメッセージ */
+.error-message {
+    display: flex;
+    color: #FF9494;
+    font-size: 18px;
 }

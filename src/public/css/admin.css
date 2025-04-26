@@ -1,4 +1,8 @@
 .header-nav__button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +17,7 @@
 .header-nav__button--logout {
     all: unset;
     font-family: Inika, serif;
-    font-size: 16px;
+    font-size: 20px;
     color: #D9C6B5;
     cursor: pointer;
     text-align: center;
@@ -272,8 +276,9 @@ svg.w-5.h-5 {
 }
 
 .close-button {
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    top: 200px;
+    left: 1090px;
 }
 
 .close-button>button {
@@ -281,6 +286,7 @@ svg.w-5.h-5 {
     height: 40px;
     border: 1px solid #8B7969;
     border-radius: 20px;
+    background-color: #FFFFFF;
     font-size: 30px;
 }
 

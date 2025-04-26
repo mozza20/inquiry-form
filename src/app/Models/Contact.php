@@ -20,7 +20,7 @@ class Contact extends Model
         if (!empty($keyword)) {
             $query->where(function($q) use ($keyword) {
                 $q->where('first_name', 'like', '%' . $keyword . '%')
-                ->orwhere('last_name', 'like', '%' . $keyword . '%')
+                ->orWhere('last_name', 'like', '%' . $keyword . '%')
                 ->orWhere('email', 'like', '%' . $keyword . '%');
             });
         }
@@ -29,7 +29,7 @@ class Contact extends Model
 
     //性別検索
     public function scopeGenderSearch($query,$gender){
-        if(!empty($gender)){
+        if(!empty($gender)&& $gender !== '性別'){
             $query->where('gender',$gender);
         }
         return $query;
@@ -38,7 +38,7 @@ class Contact extends Model
     //カテゴリ検索
     public function scopeCategorySearch($query,$category_id){
         if(!empty($category_id)){
-            $query->where('category_id',$category_id);
+            $query->where('category_id',(int)$category_id);
         }
         return $query;
     }

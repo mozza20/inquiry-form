@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     //各種検索
     public function search(Request $request){
-           $categories=Category::all();
+        $categories=Category::all();
 
         if($request->input('action')==='reset'){
             $contacts=Contact::with('category')->paginate(7);
@@ -26,7 +26,13 @@ class AdminController extends Controller
             $contacts=Contact::with('category')->KeywordSearch($request->keyword)
             ->GenderSearch($request->gender)
             ->CategorySearch($request->category_id)
-            ->DateSearch($request->date)->paginate(7);
+            ->DateSearch($request->date)->paginate(7)
+            ->appends([
+                'keyword' => $request->keyword,
+                'gender' => $request->gender,
+                'category_id' => $request->category_id,
+                'date' => $request->date,
+            ]);
         }
         return view('admin',compact('contacts','categories'));
     }

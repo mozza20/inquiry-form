@@ -111,7 +111,10 @@ h2 {
     color: #BEB1A6;
 }
 
-.login-form__row input::placeholder {
+.contact-form__item-input--last-name::placeholder,
+.contact-form__item-input--first-name::placeholder,
+.contact-form__item-input::placeholder,
+.contact-form__item-textarea::placeholder {
     color: #BEB1A6;
     font-size: 14px;
 }

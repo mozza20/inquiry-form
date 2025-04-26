@@ -20,8 +20,10 @@ Laravel環境構築
 ・MySQL 8.0
 
 ER図
-![image](https://github.com/user-attachments/assets/d5959036-1319-496c-901c-91303b1bd26d)
+![image](https://github.com/user-attachments/assets/a5f52dcf-e5da-47ae-a9f3-89ee742d5040)
 
 URL
 ・開発環境： http://localhost/
 ・phpMyAdmin： http://localhost:8080/
+![image](https://github.com/user-attachments/assets/f5f9598f-1dc9-4dd0-8599-51e81c7c5b34)
+![image](https://github.com/user-attachments/assets/9c0c0f9f-dbe6-4c80-8690-8f47e79e9efa)

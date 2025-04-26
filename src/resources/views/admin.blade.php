@@ -5,12 +5,12 @@
 @endsection
 
 @section('header')
-    <div class="header-nav">
+    <!-- <div class="header-nav"> -->
         <form class="header-nav__button" action="{{route('logout')}}" method="POST">
             @csrf
             <button class="header-nav__button--logout" type="submit">logout</button>
         </form>
-    </div>
+    <!-- </div> -->
 @endsection
 
 @section('content')
@@ -19,44 +19,38 @@
     <div class="search-form">
         <form class="search-form__inner" action="{{route('admin.search')}}" method="GET">
         @csrf
-            <tr>
-                <td>
-                    <input type="text" name="keyword" value="{{old('keyword')}}" placeholder="名前やメールアドレスを入力してください">
-                </td>
-                <td>
-                    <select name="gender">
-                    <option value="性別" selected hidden>性別</option>
-                    <option value="全て">全て</option>
-                    <option value="男性">男性</option>
-                    <option value="女性">女性</option>
-                    <option value="その他">その他</option>
-                    </select>
-                </td>
-                <td>
-                    <select name="category_id" id="">
-                        <option value="" selected hidden>お問い合わせの種類</option>
-                        @foreach($categories as $category)
-                        <option value="{{$category['id']}}">{{$category['content']}}</option>
-                        @endforeach
-                    </select>
-                </td>
-                <td>
-                    <input type="date" name="date">
-                </td>
-                <td>
-                    <button type="submit" name="action" value="search" >検索</button>
-                    <button type="submit" name="action" value="reset">リセット</button>
-                </td>
-            </tr>
+            <input class="search__keyword" type="text" name="keyword" value="{{old('keyword')}}" placeholder="名前やメールアドレスを入力してください">
+
+            <select class="search__gender" name="gender">
+                <option value="性別" selected hidden>性別</option>
+                <option value="全て">全て</option>
+                <option value="男性">男性</option>
+                <option value="女性">女性</option>
+                <option value="その他">その他</option>
+            </select>
+
+            <select class="search__category" name="category_id" id="">
+                <option value="" selected hidden>お問い合わせの種類</option>
+                @foreach($categories as $category)
+                <option value="{{$category['id']}}">{{$category['content']}}</option>
+                @endforeach
+            </select>
+
+            <input class="search__date" type="date" name="date">
+
+            <button class="search-button--search" type="submit" name="action" value="search" >検索</button>
+            <button class="search-button--reset" type="submit" name="action" value="reset">リセット</button>
         </form>
     </div>
-    <div class="export-button">
-        <form action="/csv-download" method="GET">
-            <button type="submit">エクスポート</button>
-        </form>
-    </div>
-    <div class="pagination">
-        {{$contacts->links()}}
+    <div class="under-search-form">
+        <div class="export-button">
+            <form class="export-button__inner" action="/csv-download" method="GET">
+                <button class="export-button--submit" type="submit">エクスポート</button>
+            </form>
+        </div>
+        <div class="pagination">
+            {{$contacts->links('pagination::bootstrap-4')}}
+        </div>
     </div>
     <div class="contact-lists">
         <form class="contact-lists__inner" action="" method="get">
@@ -75,7 +69,7 @@
                     <td>{{$contact['email']}}</td>
                     <td>{{$contact->category->content}}</td>
                     <td>
-                        <button type="button" class="open-modal-btn"
+                        <button class="open-modal-btn" type="button" 
                             data-id="{{ $contact->id }}"
                             data-name="{{ $contact->last_name }}　{{ $contact->first_name }}"
                             data-gender="{{ $contact->gender }}"
@@ -111,37 +105,37 @@
                 <form id="delete-form" method="POST" action="" style="display:inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" id="delete-btn" class="delete-btn">削除</button>
-        </form>
+                    <button type="submit" id="delete-btn" class="delete-btn">削除</button>
+                </form>
             </div>
         </div>
-
     </div>
-    <!-- JavaScript -->
-     @section('scripts')
-    <script>
-    document.querySelectorAll('.open-modal-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            document.getElementById('modal-name').innerText = this.dataset.name;
-            document.getElementById('modal-gender').innerText = this.dataset.gender;
-            document.getElementById('modal-email').innerText = this.dataset.email;
-            document.getElementById('modal-tel').innerText = this.dataset.tel;
-            document.getElementById('modal-address').innerText = this.dataset.address;
-            document.getElementById('modal-building').innerText = this.dataset.building;
-            document.getElementById('modal-category').innerText = this.dataset.category;
-            document.getElementById('modal-detail').innerText = this.dataset.detail;
-            // 削除アクションの設定
-            const contactId = this.dataset.id;
-            const deleteForm = document.getElementById('delete-form');
-            deleteForm.action = `/contacts/${contactId}`;
+@endsection
+<!-- JavaScript -->
+@section('scripts')
+<script>
+document.querySelectorAll('.open-modal-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        document.getElementById('modal-name').innerText = this.dataset.name;
+        document.getElementById('modal-gender').innerText = this.dataset.gender;
+        document.getElementById('modal-email').innerText = this.dataset.email;
+        document.getElementById('modal-tel').innerText = this.dataset.tel;
+        document.getElementById('modal-address').innerText = this.dataset.address;
+        document.getElementById('modal-building').innerText = this.dataset.building;
+        document.getElementById('modal-category').innerText = this.dataset.category;
+        document.getElementById('modal-detail').innerText = this.dataset.detail;
+        // 削除アクションの設定
+        const contactId = this.dataset.id;
+        const deleteForm = document.getElementById('delete-form');
+        deleteForm.action = `/contacts/${contactId}`;
 
-            document.getElementById('modal').classList.remove('hidden');
-        });
+        document.getElementById('modal').classList.remove('hidden');
     });
+});
 
-    document.getElementById('close-modal').addEventListener('click', function () {
-        document.getElementById('modal').classList.add('hidden');
-    });
-    </script>
-    @endsection
+document.getElementById('close-modal').addEventListener('click', function () {
+    document.getElementById('modal').classList.add('hidden');
+});
+</script>
+@endsection
 </div>

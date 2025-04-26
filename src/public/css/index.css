@@ -144,6 +144,7 @@ h2 {
     font-size: 20px;
 }
 
+/* エラーメッセージ */
 .error-message {
     display: flex;
     color: #FF9494;

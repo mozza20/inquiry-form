@@ -18,30 +18,28 @@ class ContactController extends Controller
         return view('index', compact('categories'));
     }
     
-    //確認画面表示
+    //確認画面表示(一旦削除)
     public function confirm(ContactRequest $request){
-        $formData=$request->all();
-        $categories=Category::all();
-        return view('confirm',compact('formData','categories'));
+        $formData = $request->all();
+        $category = Category::find($formData['category_id']);
+        $categoryName = $category ? $category->content : '';
+        return view('confirm', compact('formData', 'categoryName'));
     }
 
-    // category_id含む
+    // ボタンごとの処理(一旦削除)
     public function store(ContactRequest $request){
-    //     $phone=$request->input('tel');
-    //     $inquiry=new Contact();
-    //     $inquiry->tel=$phone;
-    //     $inquiry->save();
         $action=$request->input('action');
         if($action==='submit'){
             $inquiry=$request->only(['category_id','name','gender','email','tel','address','building','detail']);
             Contact::create($inquiry);
             return redirect()->route('contact.thanks');
-        }else if(action==='back'){
+        }else if($action==='back'){
             return redirect()->route('contact.form')->withInput(); 
         }else{
             return redirect()->route('contact.form');
         }
     }
+    
  
     public function thanks(){
         return view(route('contact.thanks'));

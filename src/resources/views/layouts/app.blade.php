@@ -13,12 +13,14 @@
     @yield('css')
 </head>
 <body>
+    @if (!View::hasSection('no_header'))
     <header class="header">
         <div class="header__inner">
              <a class="header__logo" href="/">FashonablyLate</a>
              @yield('header')
         </div>
     </header>
+    @endif
 
     <main>
         @yield('content')

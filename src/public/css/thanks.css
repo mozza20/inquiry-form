@@ -1,0 +1,33 @@
+/* ヘッダーを消す */
+
+.thanks {
+    position: relative;
+}
+
+.thanks-message {
+    position: absolute;
+    top: 461px;
+    left: 500px;
+    width: 510px;
+    text-align: center;
+    font-size: 30px;
+    color: #8B7969;
+}
+
+.thanks__background {
+    position: absolute;
+    left: 66px;
+    width: 1381px;
+    font-size: 280px;
+    color: rgb(139, 121, 105, 0.05);
+}
+
+.thanks__home-button {
+    position: absolute;
+    top: 555px;
+    left: 686px;
+    padding: 10px 40px;
+    background-color: #82756A;
+    color: #ffffff;
+    font-size: 20px;
+}

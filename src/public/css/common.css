@@ -5,17 +5,18 @@ body {
 }
 
 .header {
+    max-width: 1515px;
     height: 100px;
-    left: 0px;
-    top: 0px;
-    z-index: 1000;
+    margin: 0 auto;
 }
 
 .header__inner {
     display: flex;
+    align-items: center;
     margin: 0 auto;
     max-width: 1512px;
     background: #FFFFFF;
+    border-bottom: 1px solid #E0DFDE;
 }
 
 .header__logo {

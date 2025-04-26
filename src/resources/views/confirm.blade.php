@@ -9,13 +9,17 @@
     <h2>Confirm</h2>
     <div class="contact-table">
         <form action="{{ route('contact.store') }}" method="POST">
-            @csrf
+        @csrf
             <table class="confirm-table__inner">
                 <tr class="confirm-table__row">
                     <th class="confirm-table__item-label">お名前</th>
                     <td>
-                    <input class="confirm-table__item-input" type="text" name="name" value="{{$formData['last_name']}}　{{$formData['first_name']}}" readonly> 
+                    <!-- 表示用 -->
+                    <input class="confirm-table__item-input" type="text" value="{{$formData['last_name']}}　{{$formData['first_name']}}" readonly> 
                     </td>
+                    <!-- 送信用 -->
+                     <input type="hidden" name="last_name" value="{{ $formData['last_name'] }}">
+                    <input type="hidden" name="first_name" value="{{ $formData['first_name'] }}">
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__item-label">性別</th>
@@ -32,7 +36,12 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__item-label">電話番号</th>
                     <td>
-                        <input class="confirm-table__item-input" type="tel" name="tel" value="{{$formData['no1']}}{{$formData['no2']}}{{$formData['no3']}}" readonly>
+                        <!-- 表示用 -->
+                        <input class="confirm-table__item-input" type="tel" value="{{$formData['no1']}}{{$formData['no2']}}{{$formData['no3']}}" readonly>
+                        <!-- 送信用 -->
+                         <input type="hidden" name="no1" value="{{ $formData['no1'] }}">
+                        <input type="hidden" name="no2" value="{{ $formData['no2'] }}">
+                        <input type="hidden" name="no3" value="{{ $formData['no3'] }}">
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -50,7 +59,10 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__item-label">お問い合わせの種類</th>
                     <td>
-                        <input class="confirm-table__item-input" type="text" name="category_id" value="{{$categoryName}}" readonly>
+                        <!-- 表示用 -->
+                        <input class="confirm-table__item-input" type="text" value="{{$categoryName}}" readonly>
+                        <!-- 送信用 -->
+                        <input type="hidden" name="category_id" value="{{$formData['category_id']}}">
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -67,4 +79,4 @@
         </form>
     </div>
 </div>
-@endsection('content')
+@endsection

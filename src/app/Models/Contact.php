@@ -9,7 +9,7 @@ class Contact extends Model
 {
     use HasFactory;
 
-    protected $fillable=['category_id','name','gender','email','no1','no2','no3','address','building','detail'];
+    protected $fillable=['category_id','last_name','first_name','gender','email','no1','no2','no3','address','building','detail'];
 
     public function category(){
         return $this->belongsTo(Category::class);

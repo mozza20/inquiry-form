@@ -14,11 +14,11 @@ class ContactController extends Controller
 {
     //問い合わせフォームの表示
     public function index(){
-         $categories = Category::all();
+        $categories = Category::all();
         return view('index', compact('categories'));
     }
     
-    //確認画面表示(一旦削除)
+    //確認画面表示
     public function confirm(ContactRequest $request){
         $formData = $request->all();
         $category = Category::find($formData['category_id']);
@@ -26,24 +26,36 @@ class ContactController extends Controller
         return view('confirm', compact('formData', 'categoryName'));
     }
 
-    // ボタンごとの処理(一旦削除)
+    // ボタンごとの処理
     public function store(ContactRequest $request){
-        $action=$request->input('action');
-        if($action==='submit'){
-            $inquiry=$request->only(['category_id','name','gender','email','tel','address','building','detail']);
-            Contact::create($inquiry);
-            return redirect()->route('contact.thanks');
-        }else if($action==='back'){
-            return redirect()->route('contact.form')->withInput(); 
-        }else{
-            return redirect()->route('contact.form');
+        if ($request->input('action') === 'back') {
+            return redirect()->route('contact.form')->withInput();
         }
+         // フルネーム結合
+        $fullName = $request->input('last_name').'　'.$request->input('first_name');
+
+        // 電話番号結合
+        $tel = $request->input('no1').$request->input('no2').$request->input('no3');
+
+        $inquiry = [
+            'category_id' => $request->input('category_id'),
+            'last_name' => $request->input('last_name'),
+            'first_name' => $request->input('first_name'),
+            'gender' => $request->input('gender'),
+            'email' => $request->input('email'),
+            'no1' => $request->input('no1'),
+            'no2' => $request->input('no2'), 
+            'no3' => $request->input('no3'), 
+            'address' => $request->input('address'),
+            'building' => $request->input('building'),
+            'detail' => $request->input('detail'),
+        ];
+        Contact::create($inquiry);
+        //return redirect()->route('contact.thanks');
+        return view('thanks');
     }
-    
- 
-    public function thanks(){
-        return view(route('contact.thanks'));
-    }
+
+
 
     //データ削除
     public function destroy(Contact $contact){

@@ -21,8 +21,7 @@ class ContactRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
             'last_name'=>['required','string','max:255'],
             'first_name'=>['required','string','max:255'],
@@ -37,7 +36,6 @@ class ContactRequest extends FormRequest
             'detail'=>['required','string','max:120'],
         ];
     }
-
     public function messages(){
         return[
             'last_name.required'=>'姓を入力してください',
@@ -57,4 +55,6 @@ class ContactRequest extends FormRequest
             'detail.max'=>'お問い合わせ内容は120文字以内で入力してください',
         ];
     }
+
+
 }
